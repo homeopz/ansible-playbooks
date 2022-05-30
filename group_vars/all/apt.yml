@@ -1,0 +1,7 @@
+---
+apt_packages_baseline:
+  - build-essential
+  - curl
+  - vim
+  - wget
+  

@@ -1,7 +1,10 @@
 collections:
+  - community.docker
   - community.general
 roles:
   - src: git+https://github.com/homeopz/ansible-role-apt.git
     name: apt
     version: main
-  
+  - src: git+https://github.com/homeopz/ansible-role-docker.git
+    name: docker
+    version: main
