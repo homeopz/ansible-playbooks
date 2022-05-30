@@ -1,0 +1,5 @@
+- name: Install baseline packages
+  hosts: baseline
+  become: true
+  roles:
+    - role: apt
