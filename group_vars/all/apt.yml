@@ -5,6 +5,7 @@ apt_packages_baseline:
   - curl
   - git
   - nfs-common
+  - unzip
   - vim
   - wget
   

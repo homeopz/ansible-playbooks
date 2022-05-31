@@ -30,6 +30,16 @@
       vars:
         apt_install: "{{ apt_packages_devops }}"
 
+- name: Install DevOps tooling
+  hosts: devops
+  become: true
+  tags: [install, devops, tools, ansible, terraform]
+  roles:
+    - role: tools-devops
+      vars:
+        ansible_install: true
+        terraform_install: true
+
 - name: Setup users
   hosts: hosts
   become: true
@@ -51,3 +61,10 @@
   tags: [docker, compose]
   roles:
     - role: docker
+
+- name: Install MicroK8S
+  hosts: k8s
+  become: true
+  tags: [k8s, microk8s]
+  roles:
+    - role: microk8s
