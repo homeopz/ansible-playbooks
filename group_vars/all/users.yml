@@ -3,7 +3,7 @@ users:
 
   - username: louis
     name: Louis
-    groups: ['wheel', 'systemd-journal']
+    groups: ['sudo', 'systemd-journal']
     uid: 10001
     password: "$6$4DcadFC0.wM$.3jy/J4hsDnP55ehJM2zTEWyCrrc.O7m3N2/j2Zohel8n1qQJM73mwmHFFOyuTbp8eZH4XReUyzE1EbyqXx/b." # mkpasswd --method=sha-512
     update_password: on_create
