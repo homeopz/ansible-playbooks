@@ -1,7 +1,10 @@
 ---
 apt_packages_baseline:
   - build-essential
+  - cifs-utils
   - curl
+  - git
+  - nfs-common
   - vim
   - wget
   

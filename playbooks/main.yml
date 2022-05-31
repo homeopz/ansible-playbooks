@@ -1,5 +1,17 @@
 
-- name: Install common packages
+---
+- name: Update packages
+  hosts: hosts
+  become: true
+  roles:
+    - role: apt
+      vars:
+        apt_update: true
+        apt_upgrade: true
+        apt_clean: true
+        apt_autoremove: true
+
+- name: Install Baseline packages
   hosts: hosts
   become: true
   roles:
