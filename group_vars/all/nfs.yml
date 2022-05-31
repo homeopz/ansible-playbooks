@@ -1,0 +1,10 @@
+---
+nfs_mounts:
+  - src: 10.0.2.5:/volume1/backup
+    path: /mnt/nas/backup
+  - src: 10.0.2.5:/volume1/data
+    path: /mnt/nas/data
+  - src: 10.0.2.5:/volume1/media
+    path: /mnt/nas/media
+  - src: 10.0.2.5:/volume1/temp
+    path: /mnt/nas/temp

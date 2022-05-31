@@ -8,3 +8,9 @@ roles:
   - src: git+https://github.com/homeopz/ansible-role-docker.git
     name: docker
     version: main
+  - src: git+https://github.com/homeopz/ansible-role-nfs.git
+    name: nfs
+    version: main    
+  - src: git+https://github.com/homeopz/ansible-role-users.git
+    name: users
+    version: main    

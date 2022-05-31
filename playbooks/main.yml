@@ -3,6 +3,7 @@
 - name: Update packages
   hosts: hosts
   become: true
+  tags: [apt, update, upgrade, autoremove]
   roles:
     - role: apt
       vars:
@@ -14,6 +15,7 @@
 - name: Install Baseline packages
   hosts: hosts
   become: true
+  tags: [apt, install, baseline]
   roles:
     - role: apt
       vars:
@@ -22,15 +24,30 @@
 - name: Install DevOps packages
   hosts: devops
   become: true
+  tags: [apt, install, devops]
   roles:
     - role: apt
       vars:
         apt_install: "{{ apt_packages_devops }}"
 
+- name: Setup users
+  hosts: hosts
+  become: true
+  tags: [users]
+  roles:
+    - role: users
+  ignore_errors: true
+
+- name: Setup NFS
+  hosts: hosts
+  become: true
+  tags: [nfs]
+  roles:
+    - role: nfs
+
 - name: Install Docker
   hosts: docker
   become: true
+  tags: [docker, compose]
   roles:
     - role: docker
-  tags:
-    - docker
