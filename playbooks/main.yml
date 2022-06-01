@@ -33,11 +33,12 @@
 - name: Install DevOps tooling
   hosts: devops
   become: true
-  tags: [install, devops, tools, ansible, terraform]
+  tags: [install, devops, tools]
   roles:
     - role: tools-devops
       vars:
         ansible_install: true
+        kubectl_install: true
         terraform_install: true
 
 - name: Setup users
