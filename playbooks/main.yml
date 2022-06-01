@@ -38,6 +38,7 @@
     - role: tools-devops
       vars:
         ansible_install: true
+        helm_install: true
         kubectl_install: true
         terraform_install: true
 
