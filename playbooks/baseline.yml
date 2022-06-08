@@ -1,4 +1,14 @@
 ---
+
+- name: Setup host
+  hosts: hosts
+  become: true
+  tasks:
+    - ansible.builtin.hostname:
+        name: "{{ ansible_host }}"
+        use: systemd
+  tags: [hostname]
+
 - name: Upgrade packages
   hosts: hosts
   become: true

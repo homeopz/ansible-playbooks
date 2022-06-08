@@ -1,6 +1,3 @@
-collections:
-  - name: community.docker
-  - name: community.general
 roles:
   - src: git+https://github.com/homeopz/ansible-role-apt.git
     name: apt
@@ -23,6 +20,3 @@ roles:
   - src: git+https://github.com/homeopz/ansible-role-tailscale.git
     name: tailscale
     version: main        
-  - src: git+https://github.com/homeopz/ansible-role-users.git
-    name: users
-    version: main    
