@@ -1,7 +1,12 @@
 ---
 apt_packages_baseline:
   - build-essential
+  - cifs-utils
   - curl
+  - git
+  - nfs-common
+  - rsync
+  - unzip
   - vim
   - wget
   
