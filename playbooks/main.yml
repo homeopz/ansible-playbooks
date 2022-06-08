@@ -8,93 +8,51 @@
         apt_update: true
         apt_upgrade: true
         apt_autoremove: true
-  tags:
-    - apt
-    - upgrade
+  tags: [apt-install]
 
----
 - name: Update packages
   hosts: hosts
   become: true
-  tags: [apt, update, upgrade, autoremove]
   roles:
     - role: apt
       vars:
         apt_update: true
         apt_upgrade: true
-        apt_clean: true
         apt_autoremove: true
+  tags: [apt-update, apt-upgrade, apt-autoremove]
 
 - name: Install Baseline packages
   hosts: hosts
   become: true
-  tags: [apt, install, baseline]
   roles:
     - role: apt
       vars:
         apt_install: "{{ apt_packages_baseline }}"
-  tags:
-    - apt
-    - install
-    - common
-
+  tags: [apt-install, baseline]
+    
 - name: Install DevOps packages
   hosts: devops
   become: true
-  tags: [apt, install, devops]
   roles:
     - role: apt
       vars:
         apt_install: "{{ apt_packages_devops }}"
-  tags:
-    - apt
-    - install
-    - devops
-
+  tags: [apt-install, devops]
+    
 - name: Setup users
   hosts: hosts
   become: true
   roles:
     - role: users
-  tags:
-    - users
-
-- name: Install DevOps tooling
-  hosts: devops
-  become: true
-  tags: [install, devops, tools]
-  roles:
-    - role: tools-devops
-      vars:
-        ansible_install: true
-        helm_install: true
-        kubectl_install: true
-        terraform_install: true
-
-- name: Setup users
-  hosts: hosts
-  become: true
   tags: [users]
-  roles:
-    - role: users
-  ignore_errors: true
 
-- name: Setup NFS
-  hosts: hosts
-  become: true
-  tags: [nfs]
-  roles:
-    - role: nfs
 
 - name: Install Docker
   hosts: docker
   become: true
-  tags: [docker, compose]
   roles:
     - role: docker
-<<<<<<< HEAD
-  tags:
-    - docker
+  tags: [install, docker, compose, docker-compose]
 
 - name: Install DevOps tooling
   hosts: devops
@@ -106,16 +64,11 @@
         helm_install: true
         kubectl_install: true
         terraform_install: true
-  tags:
-    - devops
-    - tools
-    - install
-=======
+  tags: [install, ansible, helm, kubectl, terraform]
 
-- name: Install MicroK8S
-  hosts: k8s
+- name: Setup NFS access to Home NAS
+  hosts: nas_access
   become: true
-  tags: [k8s, microk8s]
+  tags: [nfs, nas]
   roles:
-    - role: microk8s
->>>>>>> e9fca13d2b2cfab354db377a133d7e7a8d444572
+    - role: nfs
