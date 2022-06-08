@@ -20,6 +20,9 @@ roles:
   - src: git+https://github.com/homeopz/ansible-role-nfs.git
     name: nfs
     version: main    
+  - src: git+https://github.com/homeopz/ansible-role-tailscale.git
+    name: tailscale
+    version: main        
   - src: git+https://github.com/homeopz/ansible-role-users.git
     name: users
     version: main    

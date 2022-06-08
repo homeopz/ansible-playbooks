@@ -30,41 +30,12 @@
         apt_install: "{{ apt_packages_baseline }}"
   tags: [apt-install, baseline]
     
-- name: Install DevOps packages
-  hosts: devops
-  become: true
-  roles:
-    - role: apt
-      vars:
-        apt_install: "{{ apt_packages_devops }}"
-  tags: [apt-install, devops]
-    
 - name: Setup users
   hosts: hosts
   become: true
   roles:
     - role: users
   tags: [users]
-
-
-- name: Install Docker
-  hosts: docker
-  become: true
-  roles:
-    - role: docker
-  tags: [install, docker, compose, docker-compose]
-
-- name: Install DevOps tooling
-  hosts: devops
-  become: true
-  roles:
-    - role: tools-devops
-      vars:
-        ansible_install: true
-        helm_install: true
-        kubectl_install: true
-        terraform_install: true
-  tags: [install, ansible, helm, kubectl, terraform]
 
 - name: Setup NFS access to Home NAS
   hosts: nas_access
