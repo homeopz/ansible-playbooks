@@ -1,3 +1,16 @@
+---
+- name: Upgrade packages
+  hosts: hosts
+  become: true
+  roles:
+    - role: apt
+      vars:
+        apt_update: true
+        apt_upgrade: true
+        apt_autoremove: true
+  tags:
+    - apt
+    - upgrade
 
 - name: Install common packages
   hosts: hosts
@@ -6,6 +19,10 @@
     - role: apt
       vars:
         apt_install: "{{ apt_packages_baseline }}"
+  tags:
+    - apt
+    - install
+    - common
 
 - name: Install DevOps packages
   hosts: devops
@@ -14,6 +31,18 @@
     - role: apt
       vars:
         apt_install: "{{ apt_packages_devops }}"
+  tags:
+    - apt
+    - install
+    - devops
+
+- name: Setup users
+  hosts: hosts
+  become: true
+  roles:
+    - role: users
+  tags:
+    - users
 
 - name: Install Docker
   hosts: docker
@@ -22,3 +51,18 @@
     - role: docker
   tags:
     - docker
+
+- name: Install DevOps tooling
+  hosts: devops
+  become: true
+  roles:
+    - role: tools-devops
+      vars:
+        ansible_install: true
+        helm_install: true
+        kubectl_install: true
+        terraform_install: true
+  tags:
+    - devops
+    - tools
+    - install
