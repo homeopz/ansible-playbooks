@@ -28,3 +28,9 @@
         terraform_install: true
   tags: [install, ansible, helm, kubectl, terraform]
 
+- name: Install MicroK8S
+  hosts: microk8s
+  become: true
+  roles:
+    - role: microk8s      
+  tags: [install, microk8s, k8s]
