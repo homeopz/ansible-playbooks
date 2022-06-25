@@ -1,7 +1,7 @@
 ---
 
 - name: Setup host
-  hosts: hosts
+  hosts: vms
   become: true
   tasks:
     - ansible.builtin.hostname:
